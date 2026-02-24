@@ -516,15 +516,6 @@ function TrackList({ tracks, currentTrack, isPlaying, onPlay }: {
   )
 }
 
-function EqBars() {
-  return (
-    <div className="flex items-end gap-[2px] h-4">
-      {[0,1,2].map(i => (
-        <div key={i} className="eq-bar w-[3px] rounded-sm" style={{height:'8px', background:'var(--accent)'}} />
-      ))}
-    </div>
-  )
-}
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
 const Play = () => (
