@@ -239,7 +239,7 @@ export default function Home() {
     const t = setTimeout(async () => {
       setSearching(true)
       try {
-        const d = await apiFetch(`/search?q=${encodeURIComponent(query)}&type=track&limit=30`)
+        const d = await apiFetch(`/search?q=${encodeURIComponent(query)}%26type=track%26limit=30`)
         setSearchResults(d.tracks?.items || [])
       } finally { setSearching(false) }
     }, 400)
