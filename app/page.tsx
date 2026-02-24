@@ -131,7 +131,7 @@ export default function Home() {
 
     ;(window as any).onSpotifyWebPlaybackSDKReady = () => {
       const p = new (window as any).Spotify.Player({
-        name: 'forsen.me player',
+        name: 'Xaviertify',
         getOAuthToken: async (cb: (t: string) => void) => {
           const t = await getToken()
           cb(t)
@@ -265,7 +265,7 @@ export default function Home() {
       {/* ── Top bar ── */}
       <div className="flex items-center gap-4 px-6 py-4 border-b" style={{borderColor:'var(--border)'}}>
         <span className="syne font-bold text-lg tracking-tight" style={{color:'var(--accent)'}}>
-          forsen.me
+          Xaviertify
         </span>
         <div className="flex gap-1 ml-4">
           {(['playlists','search'] as const).map(v => (
