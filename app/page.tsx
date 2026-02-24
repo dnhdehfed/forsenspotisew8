@@ -129,7 +129,7 @@ export default function Home() {
     script.src = 'https://sdk.scdn.co/spotify-player.js'
     document.body.appendChild(script)
 
-    ;(window as any).onSpotifyWebPlaybackSDKReady = () => {
+    (window as any).onSpotifyWebPlaybackSDKReady = () => {
       const p = new (window as any).Spotify.Player({
         name: 'Xaviertify',
         getOAuthToken: async (cb: (t: string) => void) => {
