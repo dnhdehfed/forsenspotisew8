@@ -3,7 +3,7 @@ import { spotifyFetch } from '@/lib/spotify'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
-  const path = req.nextUrl.searchParams.get('path')
+  const path = new URL(req.url).searchParams.get("path")
   if (!path) return NextResponse.json({ error: 'No path' }, { status: 400 })
 
   try {
