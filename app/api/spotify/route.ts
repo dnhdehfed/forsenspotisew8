@@ -2,12 +2,12 @@ import { getAccessToken } from '@/lib/spotify'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
-  const url = new URL(req.url)
-  const path = url.searchParams.get('path')
-  if (!path) return NextResponse.json({ error: 'No path' }, { status: 400 })
+  const raw = req.url.split('?path=')[1]
+  if (!raw) return NextResponse.json({ error: 'No path' }, { status: 400 })
 
   try {
     const token = await getAccessToken()
+    const path = decodeURIComponent(raw)
     const spotifyUrl = `https://api.spotify.com/v1${path}`
     const res = await fetch(spotifyUrl, {
       headers: { Authorization: `Bearer ${token}` },
