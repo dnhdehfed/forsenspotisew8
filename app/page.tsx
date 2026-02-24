@@ -117,7 +117,7 @@ export default function Home() {
   useEffect(() => {
     getToken().then(t => {
       setToken(t)
-      apiFetch('/me/playlists?limit=50').then(d => setPlaylists(d.items || []))
+      apiFetch('/me/playlists?limit=50').then(d => setPlaylists((d.items || []).filter((p) => p && p.tracks)))
     }).catch(e => setPlayerError('Could not get token: ' + e.message))
   }, [])
 
@@ -142,11 +142,7 @@ export default function Home() {
       p.addListener('ready', ({ device_id }: any) => {
         setDeviceId(device_id)
         setPlayerReady(true)
-        // Transfer playback to this device
-        fetch('/api/spotify?path=' + encodeURIComponent(`/me/player`), {
-          method: 'GET'
         })
-        // We'll transfer via direct API call below
         getToken().then(tk => {
           fetch('https://api.spotify.com/v1/me/player', {
             method: 'PUT',
