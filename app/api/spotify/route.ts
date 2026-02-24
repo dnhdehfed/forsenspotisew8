@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   if (!path) return NextResponse.json({ error: 'No path' }, { status: 400 })
 
   try {
-    const data = await spotifyFetch(decodeURIComponent(path))
+    const data = await spotifyFetch(path)
     return NextResponse.json(data)
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 })
