@@ -136,7 +136,7 @@ export default function Home() {
   useEffect(() => {
     getToken().then(t => {
       setToken(t)
-      apiFetch('/me/playlists?limit=50').then(d => {
+      apiFetch("/me/playlists?limit=50").then(d => {
         setPlaylists((d.items || []).filter((p: any) => p && p.tracks))
       })
     }).catch((e: any) => setPlayerError('Could not get token: ' + e.message))
