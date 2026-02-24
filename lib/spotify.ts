@@ -38,7 +38,7 @@ export async function getAccessToken(): Promise<string> {
 
 export async function spotifyFetch(path: string) {
   const token = await getAccessToken()
-  const res = await fetch(`https://api.spotify.com/v1${path}`, {
+  const res = await fetch(`https://api.spotify.com/v1${decodeURIComponent(path)}`, {
     headers: { Authorization: `Bearer ${token}` },
     cache: 'no-store',
   })
